@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.yzr'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //监控组件
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //validation 参数校验
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    //log4j2 日志组件
+    implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.14.1'
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:2.14.1"
+    implementation('org.springframework.boot:spring-boot-starter') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    //lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    //mybatis + mysql
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+    implementation 'mysql:mysql-connector-java:8.0.18'
+    //druid 数据库连接池
+    implementation 'com.alibaba:druid-spring-boot-3-starter:1.2.18'
+    //lettuce redis操作 生菜
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.apache.commons:commons-pool2:2.6.2'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
