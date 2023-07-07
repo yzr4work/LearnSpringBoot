@@ -15,4 +15,18 @@ public interface UserService {
      * @return 查询到的用户信息
      */
     Optional<UserDto> getUserByUid(Long uid);
+
+    /**
+     * 添加用户
+     * @param user 用户信息
+     * @return 是否添加成功
+     */
+    boolean addUser(UserDto user);
+
+    /**
+     * 修改用户年纪
+     * @param userDto 用户信息
+     * @return 是否修改成功
+     */
+    boolean updateUserAge(UserDto userDto);
 }
