@@ -1,7 +1,6 @@
 package com.yzr.learnspringboot.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
@@ -77,9 +76,6 @@ public class RedisConfig {
                 .shutdownTimeout(Duration.ofMillis(shutDownTimeout))
                 .poolConfig(genericObjectPoolConfig)
                 .build();
-
-        //        factory.setShareNativeConnection(true);
-//        factory.setValidateConnection(false);
         return new LettuceConnectionFactory(redisStandaloneConfiguration, clientConfig);
     }
 
